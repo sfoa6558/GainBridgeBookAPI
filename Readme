@@ -1,0 +1,34 @@
+My approach for creating these API tests started with authentication. I created the auth.setup.ts file and had that file used for the project setup in playwright.config.ts so the state was saved in the storage state. That way you don't have to authenticate for each test, saving api calls. I named the specs according to the operations performed. For tests like get and delete, I used a BeforeAll to create books and an AfterAll to delete all books. I assumed there was no put operation. In some cases, I made assumptions about the exact response code, instead of just checking if it was truthy. 
+
+For Load Testing:
+I would probably start with something like Test: for each endpoint. This would be a minimal test
+with one call to one component. Then I would script more complex workflows. 
+
+1. Test isolated API - Hammering the API endpoint to test the baseline performance, breaking point, or availability. If a component doesn’t meet performance requirements, it is a bottleneck. Generally, the load is set in requests per second.
+
+2. Test integrated APIs. Testing one or multiple APIs that interact with other internal or external APIs. Your focus might be on testing one system or various.
+
+3. Testing end-to-end API flows. Simulate realistic interactions between APIs to test the system as a whole. The focus is often on frequent and critical user scenarios.
+
+
+Test:
+
+import http from 'k6/http';
+
+export default function () {
+  const payload = JSON.stringify({
+    "title": "The Great Gatsby",
+    "author": "F. Scott Fitzgerald",
+     "genre": "Novel",
+     "reviews": [
+    {
+      "rating": 4.5,
+      "comment": "A mesmerizing tale of ambition and love."
+    }
+  ]
+}
+
+
+  const headers = { 'Content-Type': 'application/json' };
+  http.post('https://amazonbooks/books', payload, { headers });
+}
