@@ -144,6 +144,38 @@ test('returns a list of books by author', async ({ request }) => {
 
 });
 
+
+test('returns a list of books by genre', async ({ request }) => {
+
+  const response = await request.get(`/books?genre=/${GENRE}`);
+  expect(response.ok()).toBeTruthy();
+  const body = await response.json();
+  expect(body.books.length).toEqual(2);
+
+
+  expect(body.books[0].title).toBe("Billy Budd,Sailor");
+  expect(body.books[0].author).toBe(`${AUTHOR}`);
+  expect(body.books[0].genre).toBe(`${GENRE}`);
+  expect(body.books[0].reviews).toContainEqual(
+    {
+      "rating": 4.5,
+      "comment": "The corruption of innocence by society"
+    }
+  )
+
+  expect(body.books[1].title).toBe("Moby-Dick");
+  expect(body.books[1].author).toBe(`${AUTHOR}`);
+  expect(body.books[1].genre).toBe(`${GENRE}`);
+  expect(body.books[1].reviews).toContainEqual(
+    {
+      "rating": 5,
+      "comment": "An epic tale of man versus nature."
+    }
+  )
+
+
+});
+
 test('returns a list of books with invalid genre parameter', async ({ request }) => {
 
   const response = await request.get(`/books?genre=/${INVALID}&author=${AUTHOR}`);
