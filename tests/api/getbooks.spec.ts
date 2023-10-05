@@ -148,7 +148,7 @@ test('returns a list of books with invalid genre parameter', async ({ request })
 
   const response = await request.get(`/books?genre=/${INVALID}&author=${AUTHOR}`);
   expect(response.ok).toBeFalsy();
- 
+
 
 
 
@@ -164,9 +164,8 @@ test('returns a list of books with invalid author parameter', async ({ request }
 });
 
 test.afterAll(async ({ request }) => {
-  for(let i = 1; i<=3; i++)
-  {
-    var response = await request.delete('/books/'+i);
+  for (let i = 1; i <= 3; i++) {
+    var response = await request.delete('/books/' + i);
     expect(response.ok()).toBeTruthy;
   }
 

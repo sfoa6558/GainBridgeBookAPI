@@ -235,9 +235,8 @@ test('creates a book with international characters in author', async ({ request 
 });
 
 test.afterAll(async ({ request }) => {
-  for(let i = 1; i<=4; i++)
-  {
-    var response = await request.delete('/books/'+i);
+  for (let i = 1; i <= 4; i++) {
+    var response = await request.delete('/books/' + i);
     expect(response.ok()).toBeTruthy;
   }
 

@@ -53,10 +53,9 @@ test('deletes book with invalid id', async ({ request }) => {
 });
 
 test.afterAll(async ({ request }) => {
-    for(let i = 1; i<=2; i++)
-    {
-      var response = await request.delete('/books/'+i);
-      expect(response.ok()).toBeTruthy;
+    for (let i = 1; i <= 2; i++) {
+        var response = await request.delete('/books/' + i);
+        expect(response.ok()).toBeTruthy;
     }
-  
-  });
+
+});

@@ -18,7 +18,7 @@ test.beforeAll(async ({ request }) => {
         }
     });
 
-   
+
 
 
 });
@@ -56,9 +56,9 @@ test('returns details of specific book with invalid id', async ({ request }) => 
 });
 
 test.afterAll(async ({ request }) => {
-    
-      var response = await request.delete('/books/1');
-      expect(response.ok()).toBeTruthy;
-   
-  
-  });
+
+    var response = await request.delete('/books/1');
+    expect(response.ok()).toBeTruthy;
+
+
+});
