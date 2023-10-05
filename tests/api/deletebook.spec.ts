@@ -1,13 +1,15 @@
 import { test, expect, type Page } from '@playwright/test';
 
+const GENRE = "Fiction"
+const AUTHOR = "Herman Melville"
 
 
 test.beforeAll(async ({ request }) => {
     await request.post('/books', {
         data: {
             "title": "Billy Budd,Sailor",
-            "author": "Herman Melville",
-            "genre": "Fiction"
+            "author": `${AUTHOR}`,
+            "genre": `${GENRE}`
 
         }
     });
@@ -15,8 +17,8 @@ test.beforeAll(async ({ request }) => {
     await request.post('/books', {
         data: {
             "title": "Moby Dick",
-            "author": "Herman Melville",
-            "genre": "Fiction",
+            "author": `${AUTHOR}`,
+            "genre": `${GENRE}`,
             "reviews": [
                 {
                     "rating": 4.5,
