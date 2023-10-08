@@ -31,9 +31,9 @@ test('creates a book with review', async ({ request }) => {
 test('creates a book with no review', async ({ request }) => {
   const newBook = await request.post('/books', {
     data: {
-      "title": "Heavy",
+      "title": "Long Division",
       "author": "Kiese Laymon",
-      "genre": "Fiction",
+      "genre": "Fiction"
 
     }
   });
@@ -52,7 +52,7 @@ test('creates a book with a number in the title', async ({ request }) => {
     data: {
       "title": 7,
       "author": "F. Scott Fitzgerald",
-      "genre": "Novel",
+      "genre": "Novel"
 
     }
   });
@@ -121,7 +121,7 @@ test('creates a book with a review and no rating', async ({ request }) => {
   });
 
   expect(newBook.ok()).toBeFalsy();
-  //expect(newBook.status()).toBe(400);
+  expect(newBook.status()).toBe(400);
 
 });
 
@@ -141,7 +141,7 @@ test('creates a book with a review and no comment', async ({ request }) => {
   });
 
   expect(newBook.ok()).toBeFalsy();
-  //expect(newBook.status()).toBe(400);
+  expect(newBook.status()).toBe(400);
 
 });
 
@@ -162,7 +162,7 @@ test('creates a book with a review and a string for the rating', async ({ reques
   });
 
   expect(newBook.ok()).toBeFalsy();
-  //expect(newBook.status()).toBe(400);
+  expect(newBook.status()).toBe(400);
 
 });
 
@@ -183,7 +183,7 @@ test('creates a book with a review and a number for the comment', async ({ reque
   });
 
   expect(newBook.ok()).toBeFalsy();
-  //expect(newBook.status()).toBe(400);
+  expect(newBook.status()).toBe(400);
 
 });
 

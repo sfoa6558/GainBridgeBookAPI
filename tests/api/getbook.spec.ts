@@ -5,13 +5,13 @@ import { test, expect, type Page } from '@playwright/test';
 test.beforeAll(async ({ request }) => {
     await request.post('/books', {
         data: {
-            "title": "Billy Budd,Sailor",
-            "author": "Herman Melville",
-            "genre": "Fiction",
+            "title": "Heavy",
+            "author": "Kiese Laymon",
+            "genre": "Memoir",
             "reviews": [
                 {
-                    "rating": 4.5,
-                    "comment": "The corruption of innocence by society"
+                    "rating": 5,
+                    "comment": "A memoir about a man dealing with issues"
                 }
             ]
 
@@ -32,14 +32,14 @@ test('returns details of specific book with valid id', async ({ request }) => {
 
     expect(await body.json()).toContainEqual(expect.objectContaining({
         "id": "1",
-        "title": "Billy Budd,Sailor",
-        "author": "Herman Melville",
+        "title": "Heavy",
+        "author": "Kiese Laymon",
         "genre": "Fiction",
         "reviews": [
             {
                 "reviewId": "r1",
-                "rating": 4.5,
-                "comment": "The corruption of innocence by society"
+                "rating": 5,
+                "comment": "A memoir about a man dealing with issues"
             }
         ]
     }));
